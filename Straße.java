@@ -1,59 +1,51 @@
-public class Straße
-{
-    String name; // Name der Straße
-    int Kaufpreis; // Kaufpreis der Straße
-    int Häuser; // Anzahl der Häuser auf der Straße
-    int Miete; // aktuelle Miete der Straße
-    boolean gekauft; // true, wenn Straße gekauft wurde
+public class Strasse {
+    String name;
+    int Kaufpreis;
+    int Häuser;
+    int Miete;
+    boolean gekauft;
+    int Hauspreis;
 
-    public Straße (String na, int Ka, int Mi, boolean ge)
-    {
-        name=na;
+    public Strasse(String na, int Ka, boolean ge) {
+        name = na;
         Kaufpreis = Ka;
-        Häuser =0;
-        Miete = Mi;
-        gekauft =ge;
+        Häuser = 0;
+        Miete = (int)(Kaufpreis * 0.1);
+        gekauft = ge;
+        Hauspreis = (int)(Kaufpreis * 0.5); // z.B. 50 % des Kaufpreises
     }
 
-public int KaufeHaus () // Methode zum Kauf eines Hauses
-{
-    if (Häuser<=4)
-    {Häuser = Häuser+1;}
-    else
-    {System.out.println("Maximale Häuserzahl erreicht!");}
-    
-    return Häuser;
-}
+    public void KaufeHaus() {
+        if (Häuser < 5 && gekauft) {
+            Häuser++;
+            MieteNeu();
+        } else if (!gekauft) {
+            System.out.println("Strasse nicht gekauft!");
+        } else {
+            System.out.println("Maximale Häuserzahl erreicht!");
+        }
+    }
 
+    public void KaufeStrasse() {
+        gekauft = true;
+    }
 
-public void KaufeStraße() // Kaufe die Straße
-{
-    gekauft = true;
-}
-
-public int MieteNeu() // Methode zur Berechnung der Miete
-{
-   
-    
+   public int MieteNeu() {
     if (Häuser == 0) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.1, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 1);
     } else if (Häuser == 1) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.2, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 3);
     } else if (Häuser == 2) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.3, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 5);
     } else if (Häuser == 3) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.4, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 10);
     } else if (Häuser == 4) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.5, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 15);
     } else if (Häuser == 5) {
-        Miete = (int) Math.ceil(Miete * Math.pow(1.6, Häuser));
+        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 20);
     } else {
         System.out.println("Maximale Anzahl an Häusern erreicht!");
     }
-    return Miete;
-}
-    
-// Berecchnung neu
-// int berechneMiete(int kaufpreis)
-// {retrun kaufpreis * 0.1;}
+    return Miete;} // Ende der Methode
+
 }
