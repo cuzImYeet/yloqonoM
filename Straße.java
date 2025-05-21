@@ -16,7 +16,7 @@ public class Strasse {
     }
 
     public void KaufeHaus() {
-        if (Häuser < 5 && gekauft) {
+        if (Häuser <= 5 && gekauft) {
             Häuser++;
             MieteNeu();
         } else if (!gekauft) {
