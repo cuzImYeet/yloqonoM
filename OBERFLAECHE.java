@@ -118,7 +118,7 @@ public class OBERFLAECHE
         JButton knopf7 = new JButton("Zurück");
         knopf7.setFont(new Font("Arial", Font.BOLD, 50));
         //Hier kommt der Text hin
-        JLabel Regeln = new JLabel("1.Spielrichtung Das Spiel verläuft gegen den Uhrzeigersinn. ");
+        JLabel Regeln = new JLabel("<html> 1.Spielrichtung <br> Das Spiel verläuft gegen den Uhrzeigersinn. <br> 2.Spielstart <br> Jeder Spieler startet auf dem Startfeld („Los“) <br> Die Zugreihenfolge wird durch Würfeln bestimmt.<br> 3.Spielzug <br> Spieler würfeln zu Beginn ihres Zuges. <br> Die Spielfigur wird entsprechend der Augenzahl gegen den Uhrzeigersinn bewegt. <br> Das betretene Feld wird ausgeführt (z. B. Grundstück kaufen, Miete zahlen, Ereignis ziehen).<br> Eigentum & Miete<br> Freie Grundstücke können gekauft werden.<br> Bei Betreten eines fremden Grundstücks muss Miete gezahlt werden.<br> Kann die Miete nicht gezahlt werden, müssen eigene Grundstücke verkauft werden. Zahlungsunfähigkeit kann zum Spielausscheiden führen.<br> 4.Sonderfelder<br> Schule (Gefängnis):<br> Spieler landen durch Ereignisse oder Felder in der Schule.<br> Dort müssen sie eine Runde aussetzen oder sich für 50 Münzen freikaufen, um im nächsten Zug weiterzuspielen.<br> Ereignisfelder: Spieler ziehen eine zufällige Ereigniskarte mit positiven oder negativen Effekten.<br> „Gehe zur Schule“: Spieler werden direkt in die Schule versetzt.<br> 5.Bot-Spieler<br> Bots führen ihre Züge automatisch aus: würfeln, bewegen, kaufen, zahlen usw.<br> Ziel des Spiels<br> Ziel ist es, möglichst viel Geld und Besitz anzuhäufen.<br> Das Spiel endet nach einer festgelegten Rundenzahl oder wenn nur noch ein Spieler zahlungsfähig ist.<br> 6.Zusätzliche Regeln<br> Es gibt keine Häuser oder Hotels.<br> Beim Passieren von „Los“ erhält der Spieler kein Geld.<br> Wenn du willst, kann ich daraus auch ein Design für ein Regelblatt oder Plakat machen!</html>");
         
 
         
@@ -149,9 +149,10 @@ public class OBERFLAECHE
         fenster4.setBounds(300,300,500,200);
         
         zeichenflaeche1.add(Regeln, "North");
+        zeichenflaeche1.add(knopf7, "South");
 
 
-        //Spielfeld experimentell
+        //Spielfeld
 
         JFrame fenster3 = new JFrame("Optionen");
         fenster3.setBounds(300, 300, 500, 300);
@@ -217,7 +218,6 @@ public class OBERFLAECHE
         new OBERFLAECHE();
     }
 }
-
     
         
 
