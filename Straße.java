@@ -13,6 +13,7 @@ public class Strasse {
         Miete = (int)(Kaufpreis * 0.1);
         gekauft = ge;
         Hauspreis = (int)(Kaufpreis * 0.5); // z.B. 50 % des Kaufpreises
+        this.name = name;
     }
 
     public void KaufeHaus() {
@@ -48,4 +49,7 @@ public class Strasse {
     }
     return Miete;} // Ende der Methode
 
+    public String getName() {
+        return name;
+    }
 }
