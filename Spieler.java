@@ -1,7 +1,7 @@
 public class Spieler
 {
     int Kapital;
-    String [] gekaufteStraßen;
+    Strasse[] gekaufteStrassen; // statt String[]
     boolean gefängnis;
     Spielfeld Spi; // Annahme: Spielfeld ist eine Klasse, die das Spielfeld repräsentiert
 
@@ -10,7 +10,7 @@ public class Spieler
         Spi = brett; // Initialisiere das Spielfeld
         Kapital = 1500; // Startkapital
         gefängnis = false; // Spieler ist nicht im Gefängnis
-        gekaufteStraßen = new String[28];
+        gekaufteStrassen = new Strasse[28];
 
     }
 
@@ -25,15 +25,17 @@ public class Spieler
         }
     }
 
-    public void aneignen(String straße)
+    public void aneignen(Strasse strasse)
     {
-        for (int i = 0; i < gekaufteStraßen.length; i++) 
+        for (int i = 0; i < gekaufteStrassen.length; i++) 
         {
-        if (gekaufteStraßen[i] == null) 
-        {
-            gekaufteStraßen[i] = straße;
-            System.out.println("Straße erfolgreich gekauft: " + straße);
-        }
+            if (gekaufteStrassen[i] == null) 
+            {
+                gekaufteStrassen[i] = strasse;
+                strasse.setBesitzer(this);
+                System.out.println("Straße erfolgreich gekauft: " + strasse.getName());
+                break;
+            }
         }
     }
 

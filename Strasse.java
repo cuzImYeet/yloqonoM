@@ -1,10 +1,11 @@
 public class Strasse {
-    String name;
+    private String name;
     int Kaufpreis;
     int Häuser;
     int Miete;
     boolean gekauft;
     int Hauspreis;
+    private Spieler besitzer; // Besitzer der Straße
 
     public Strasse(String na, int Ka, boolean ge) {
         name = na;
@@ -13,6 +14,7 @@ public class Strasse {
         Miete = (int)(Kaufpreis * 0.1);
         gekauft = ge;
         Hauspreis = (int)(Kaufpreis * 0.5); // z.B. 50 % des Kaufpreises
+        this.name = name;
     }
 
     public void KaufeHaus() {
@@ -48,8 +50,15 @@ public class Strasse {
     }
     return Miete;} // Ende der Methode
 
+    public String getName() {
+        return name;
+    }
 
+    public void setBesitzer(Spieler spieler) {
+        this.besitzer = spieler;
+    }
 
-
-    
+    public Spieler getBesitzer() {
+        return besitzer;
+    }
 }
