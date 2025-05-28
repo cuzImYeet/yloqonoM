@@ -3,9 +3,11 @@ public class Spieler
     int Kapital;
     String [] gekaufteStraßen;
     boolean gefängnis;
+    Spielfeld Spi; // Annahme: Spielfeld ist eine Klasse, die das Spielfeld repräsentiert
 
-    public Spieler()
+    public Spieler(Spielfeld brett)
     {
+        Spi = brett; // Initialisiere das Spielfeld
         Kapital = 1500; // Startkapital
         gefängnis = false; // Spieler ist nicht im Gefängnis
         gekaufteStraßen = new String[28];
@@ -37,7 +39,13 @@ public class Spieler
 
     public void würfeln()
     {
-        Spielfeld.würfeln();
+        Spi.würfeln();
         System.out.println("Der Spieler hat gewürfelt.");
+    }
+
+    public void insGefängnis()
+    {
+        gefängnis = true; // Spieler ist im Gefängnis
+        System.out.println("Der Spieler ist im Gefängnis.");
     }
 }
