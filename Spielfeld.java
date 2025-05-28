@@ -11,12 +11,12 @@ public class Spielfeld {
         // Initialisiere das Spielfeld mit Feldern/Straßen
         spielfeld[0] = new Strasse("Los-Feld", -2000, false); //Los-Feld
         spielfeld[1] = new Strasse("Herrnstraße",400,false );
-        spielfeld[2] = new Strasse("Bank Steuer", 0, false); //SPECIAL-Feld
+        spielfeld[2] = new Strasse("Special 1", 0, false); //SPECIAL-Feld
         spielfeld[3] = new Strasse("Hauptsraße", 350, false);
         spielfeld[4] = new Strasse("Special 2", 0, false); //SPECIAL-Feld
         spielfeld[5] = new Strasse("BHF", 200, false);    // Bahnhof-Feld
         spielfeld[6] = new Strasse("Stadtwaldstraße", 320, false );
-        spielfeld[7] = new Strasse("Gemeinschaftsfeld",0, false); //SPECIAL-Feld
+        spielfeld[7] = new Strasse("Special 3",0, false); //SPECIAL-Feld
         spielfeld[8] = new Strasse("Schlesierstraße", 300, false );
         spielfeld[9] = new Strasse("Dr.Theodor-Neubauer-Straße", 300, false );
         spielfeld[10] = new Strasse("Geh Gefängnis", 0, false); // Gefängnis-Feld
@@ -32,7 +32,7 @@ public class Spielfeld {
         spielfeld[20] = new Strasse("Free Parking", 0, false); // Freies Parken-Feld
         spielfeld[21] = new Strasse("Lessinstraße", 200, false );
         spielfeld[22] = new Strasse("Goethestraße", 180, false );
-        spielfeld[23] = new Strasse("Gemeinschaftsfeld", 0, false); //SPECIAL-Feld
+        spielfeld[23] = new Strasse("Special 5", 0, false); //SPECIAL-Feld
         spielfeld[24] = new Strasse("Schillerstraße", 180, false );
         spielfeld[25] = new Strasse("BHF", 200, false); // Bahnhof-Feld
         spielfeld[26] = new Strasse("Haydnstraße", 160, false );
@@ -45,9 +45,9 @@ public class Spielfeld {
         spielfeld[33] = new Strasse("Special 6", 0, false);   //SPECIAL-Feld
         spielfeld[34] = new Strasse("Sonnenstraße", 100, false );
         spielfeld[35] = new Strasse("BHF", 200, false); // Bahnhof-Feld
-        spielfeld[36] = new Strasse("Steuerabgaben", 0, false); //SPECIAL-Feld
+        spielfeld[36] = new Strasse("Special 7", 0, false); //SPECIAL-Feld
         spielfeld[37] = new Strasse("Birkenweg", 60, false );
-        spielfeld[38] = new Strasse("Gemeinschaftsfeld", 0, false); //SPECIAL-Feld
+        spielfeld[38] = new Strasse("Special 8", 0, false); //SPECIAL-Feld
         spielfeld[39] = new Strasse("Eichenweg", 60, false ); 
         
     }
