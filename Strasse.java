@@ -5,6 +5,8 @@ public class Strasse {
     int Miete;
     boolean gekauft;
     int Hauspreis;
+    boolean istSpezialfeld;
+    String spezialTyp;
 
     public Strasse(String na, int Ka, boolean ge) {
         name = na;
@@ -48,8 +50,44 @@ public class Strasse {
     }
     return Miete;} // Ende der Methode
 
-
-
+    public void betreteFeld(Spieler spieler) {
+    if (istSpezialfeld) {
+        if (spezialTyp != null) {
+            switch (spezialTyp.toUpperCase()) {
+                case "GEFÄNGNIS":
+                    spieler.insGefängnis();
+                    break;
+                case "FREIPARKEN":
+                    System.out.println("Frei Parken! Keine Aktion.");
+                    break;
+                case "GEMEINSCHAFTSFELD":
+                    System.out.println("Gemeinschaftsfeld! Ziehe eine Gemeinschaftskarte.");
+                    // Hier könntest du eine Methode zum Ziehen einer Gemeinschaftskarte aufrufen
+                    break;
+                case "EREIGNISFELD":
+                    System.out.println("Ereignisfeld! Ziehe eine Ereigniskarte.");
+                    // Hier könntest du eine Methode zum Ziehen einer Ereigniskarte aufrufen
+                    break;
+                case "LOS":
+                    spieler.Kapital += 200;
+                    System.out.println("Du erhältst 200€ für das Überqueren von LOS!");
+                    break;
+                default:
+                    System.out.println("Unbekanntes Spezialfeld: " + spezialTyp);
+            }
+        } else {
+            System.out.println("Spezialfeld ohne Typ!");
+        }
+    } else {
+        if (!gekauft) {
+            System.out.println("Die Straße kann gekauft werden.");
+            // Kauflogik hier einbauen
+        } else {
+            System.out.println("Die Straße gehört jemandem. Miete zahlen!");
+            // Mietlogik hier einbauen
+        }
+    }
+}
 
     
 }
