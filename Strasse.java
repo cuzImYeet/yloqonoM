@@ -17,21 +17,23 @@ public class Strasse {
         Hauspreis = (int)(Kaufpreis * 0.5); // z.B. 50 % des Kaufpreises
     }
 
-    public void KaufeHaus() {
+   public void KaufeHaus() {
         if (Häuser <= 5 && gekauft) {
             Häuser++;
             MieteNeu();
-        } else if (!gekauft) {
-            System.out.println("Strasse nicht gekauft!");
         } else {
             System.out.println("Maximale Häuserzahl erreicht!");
         }
     }
 
     public void KaufeStrasse() {
-        gekauft = true;
+        if (!gekauft) {
+            System.out.println("Die Straße kann gekauft werden.");
+            gekauft = true;
+        } else {
+            System.out.println("Die Straße gehört bereits jemandem.");
+        }
     }
-
    public int MieteNeu() {
     if (Häuser == 0) {
         Miete = (int) Math.ceil(Kaufpreis * 0.1 * 1);
