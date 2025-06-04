@@ -114,7 +114,9 @@ public class Spielfeld {
         // Überrundung erkannt, wenn neue Position kleiner als alte Position
         return neuePosition < altePosition;
     }
-     
+    //if (!spieler.bankrott) { MACH MA DAS DES PASST)}
+    // Spieler darf ziehen
+
     public int würfeln() {
         // Simuliert einen Würfelwurf mit zwei Würfeln (2-12)
         int wurf = (int)(Math.random() * 6 + 1) + (int)(Math.random() * 6 + 1);
