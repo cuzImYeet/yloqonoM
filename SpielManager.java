@@ -51,7 +51,32 @@ public class SpielManager {
         aktuellerSpielerIndex = (aktuellerSpielerIndex + 1) % spielerListe.size();
     }
 
+
+    // NEU: alles bis nächste //
     public Spieler getAktuellerSpieler() {
         return spielerListe.get(aktuellerSpielerIndex);
     }
+        public void kaufeHaus(Spieler spieler, Strasse strasse) {
+        // Prüfen, ob Spieler Besitzer ist
+        if (strasse.getBesitzer() != spieler) {
+            System.out.println("Du besitzt diese Straße nicht!");
+            return;
+        }
+        // Prüfen, ob noch Häuser gebaut werden können
+        if (strasse.Häuser >= 5) {
+            System.out.println("Maximale Häuserzahl erreicht!");
+            return;
+        }
+        // Prüfen, ob genug Kapital vorhanden ist
+        if (spieler.Kapital < strasse.Hauspreis) {
+            System.out.println("Nicht genug Kapital für ein Haus!");
+            return;
+        }
+        // Haus kaufen
+        spieler.bezahlen(strasse.Hauspreis);
+        strasse.KaufeHaus();
+        System.out.println(spieler.getName() + " hat ein Haus auf " + strasse.getName() + " gebaut!");
+    }
+
+// bis hier
 }

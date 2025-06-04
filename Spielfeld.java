@@ -39,7 +39,7 @@ public class Spielfeld {
         spielfeld[27] = new Strasse("Beethovenstraße", 140, false );
         spielfeld[28] = new Strasse("Umspannwerk", 150, false );
         spielfeld[29] = new Strasse("Mozartstraße", 140, false );
-        spielfeld[30] = new Strasse("Gefängnis / Gefägnis-Besucher", 0, false); // Gefängnis-Feld
+        spielfeld[30] = new Strasse("Schule / Elternsprechtag", 0, false); // Gefängnis-Feld
         spielfeld[31] = new Strasse("Merkurstraße", 120, false );
         spielfeld[32] = new Strasse("Venusstraße", 100, false );
         spielfeld[33] = new Strasse("Special 6", 0, false);   //SPECIAL-Feld

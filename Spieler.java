@@ -1,12 +1,15 @@
 public class Spieler
 {
-    int Kapital;
+    //------------------------------FEHLT NOCH: Name und getName() ----------------
+     int Kapital;
     Strasse[] gekaufteStrassen; // statt String[]
-    boolean gefängnis;
-    Spielfeld Spi; // Annahme: Spielfeld ist eine Klasse, die das Spielfeld repräsentiert
+     boolean gefängnis;
+     Spielfeld Spi; // Annahme: Spielfeld ist eine Klasse, die das Spielfeld repräsentiert
+     String name; // NEU: Name als Attribut
 
-    public Spieler(Spielfeld brett)
+    public Spieler(String name, Spielfeld brett)
     {
+        this.name = name; // NEU: Name initialisieren
         Spi = brett; // Initialisiere das Spielfeld
         Kapital = 1500; // Startkapital
         gefängnis = false; // Spieler ist nicht im Gefängnis
@@ -49,5 +52,11 @@ public class Spieler
     {
         gefängnis = true; // Spieler ist im Gefängnis
         System.out.println("Der Spieler ist im Gefängnis.");
+    }
+
+    // NEU: Getter für den Namen
+    public String getName() 
+    {
+        return name; // NEU: Getter für den Namen
     }
 }

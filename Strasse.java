@@ -1,11 +1,11 @@
 public class Strasse {
-    private String name;
-    int Kaufpreis;
-    int Häuser;
-    int Miete;
-    boolean gekauft;
-    int Hauspreis;
-    private Spieler besitzer; // Besitzer der Straße
+     String name; // NEU: Name als Attribut
+     int Kaufpreis;
+     int Häuser;
+     int Miete;
+     boolean gekauft;
+     int Hauspreis;
+     Spieler besitzer; // Besitzer der Straße // NEU: Besitzer als Attribut
 
     public Strasse(String na, int Ka, boolean ge) {
         name = na;
@@ -50,14 +50,17 @@ public class Strasse {
     }
     return Miete;} // Ende der Methode
 
+    //NEU: Getter für Name
     public String getName() {
         return name;
     }
 
+    //NEU: Bestitzer setzen 
     public void setBesitzer(Spieler spieler) {
         this.besitzer = spieler;
     }
 
+    //NEU: Besitzer abfragen
     public Spieler getBesitzer() {
         return besitzer;
     }
