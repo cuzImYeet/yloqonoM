@@ -1,4 +1,4 @@
-//Autor Diyar Karatas
+//Autor Diyar Karatas, Co-Autor Florian Grabichler
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
