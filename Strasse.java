@@ -1,95 +1,78 @@
-public class Strasse {
-    String name;
+
+public class Strasse extends Feld {
     int Kaufpreis;
     int Häuser;
     int Miete;
     boolean gekauft;
     int Hauspreis;
-    boolean istSpezialfeld;
-    String spezialTyp;
+    Spieler besitzer;
 
     public Strasse(String na, int Ka, boolean ge) {
-        name = na;
+        super(na);
         Kaufpreis = Ka;
         Häuser = 0;
         Miete = (int)(Kaufpreis * 0.1);
         gekauft = ge;
-        Hauspreis = (int)(Kaufpreis * 0.5); // z.B. 50 % des Kaufpreises
+        Hauspreis = (int)(Kaufpreis * 0.5);
     }
 
-   public void KaufeHaus() {
-        if (Häuser <= 5 && gekauft) {
-            Häuser++;
-            MieteNeu();
-        } else {
-            System.out.println("Maximale Häuserzahl erreicht!");
-        }
+    public void kaufeHaus(Spieler spieler) {
+        if (this.getBesitzer() != spieler) return; // Keine Meldung!
+        if (this.Häuser >= 5) return;
+        if (spieler.getKapital() < this.Hauspreis) return;
+        this.Häuser++;
     }
 
     public void KaufeStrasse() {
-        if (!gekauft) {
-            System.out.println("Die Straße kann gekauft werden.");
-            gekauft = true;
-        } else {
-            System.out.println("Die Straße gehört bereits jemandem.");
-        }
+        gekauft = true;
     }
-   public int MieteNeu() {
-    if (Häuser == 0) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 1);
-    } else if (Häuser == 1) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 3);
-    } else if (Häuser == 2) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 5);
-    } else if (Häuser == 3) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 10);
-    } else if (Häuser == 4) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 15);
-    } else if (Häuser == 5) {
-        Miete = (int) Math.ceil(Kaufpreis * 0.1 * 20);
-    } else {
-        System.out.println("Maximale Anzahl an Häusern erreicht!");
-    }
-    return Miete;} // Ende der Methode
 
+    public int MieteNeu() {
+        switch (Häuser) {
+            case 0 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 1);
+            case 1 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 3);
+            case 2 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 5);
+            case 3 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 10);
+            case 4 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 15);
+            case 5 -> Miete = (int) Math.ceil(Kaufpreis * 0.1 * 20);
+            default -> System.out.println("Maximale Anzahl an Häusern erreicht!");
+        }
+        return Miete;} // Ende der Methode
+
+    //NEU: Getter für Name
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    //NEU: Bestitzer setzen 
+    public void setBesitzer(Spieler spieler) {
+        this.besitzer = spieler;
+    }
+
+    //NEU: Besitzer abfragen
+    public Spieler getBesitzer() {
+        return besitzer;
+    }
+
+    @Override
     public void betreteFeld(Spieler spieler) {
-    if (istSpezialfeld) {
-        if (spezialTyp != null) {
-            switch (spezialTyp.toUpperCase()) {
-                case "GEFÄNGNIS":
-                    spieler.insGefängnis();
-                    break;
-                case "FREIPARKEN":
-                    System.out.println("Frei Parken! Keine Aktion.");
-                    break;
-                case "GEMEINSCHAFTSFELD":
-                    System.out.println("Gemeinschaftsfeld! Ziehe eine Gemeinschaftskarte.");
-                    // Hier könntest du eine Methode zum Ziehen einer Gemeinschaftskarte aufrufen
-                    break;
-                case "EREIGNISFELD":
-                    System.out.println("Ereignisfeld! Ziehe eine Ereigniskarte.");
-                    // Hier könntest du eine Methode zum Ziehen einer Ereigniskarte aufrufen
-                    break;
-                case "LOS":
-                    spieler.Kapital += 200;
-                    System.out.println("Du erhältst 200€ für das Überqueren von LOS!");
-                    break;
-                default:
-                    System.out.println("Unbekanntes Spezialfeld: " + spezialTyp);
-            }
-        } else {
-            System.out.println("Spezialfeld ohne Typ!");
-        }
-    } else {
         if (!gekauft) {
             System.out.println("Die Straße kann gekauft werden.");
-            // Kauflogik hier einbauen
         } else {
-            System.out.println("Die Straße gehört jemandem. Miete zahlen!");
-            // Mietlogik hier einbauen
+            if (besitzer != null && !besitzer.equals(spieler)) {
+                System.out.println("Die Straße gehört " + besitzer.getName() + ". " + spieler.getName() + " zahlt Miete: " + Miete);
+                spieler.bezahlen(Miete);
+                besitzer.bezahlen(-Miete);
+            } else if (besitzer != null && besitzer.equals(spieler)) {
+                System.out.println("Willkommen auf deiner eigenen Straße, " + spieler.getName() + "!");
+            } 
         }
     }
-}
 
-    
+    public int getMiete() {
+        // Stell sicher, dass Miete aktuell
+        MieteNeu();
+        return this.Miete;
+    }
 }
